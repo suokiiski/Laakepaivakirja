@@ -7,6 +7,8 @@ public class Medicine {
     private String instruction;
     private Calendar time;
 
+
+
     public Medicine (String n, String i, int hours, int mins) {
         this.name = n;
         this.instruction = i;

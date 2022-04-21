@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<!--    <ListView
+    <ListView
         android:id="@+id/list_layout"
         android:layout_width="409dp"
         android:layout_height="333dp"
@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bottomNavigationView" />
+         />
 
     <CalendarView
         android:id="@+id/calendar"
@@ -23,33 +23,8 @@
         android:layout_centerInParent="true"
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"></CalendarView>-->
+        app:layout_constraintEnd_toEndOf="parent"></CalendarView>
 
-    <FrameLayout
-        android:id="@+id/frame_layout"
-        android:layout_width="411dp"
-        android:layout_height="675dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bottomNavigationView">
-
-    </FrameLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="#1091BF"
-        app:itemIconTint="#fff"
-        app:itemTextColor="#fff"
-        app:menu="@menu/valikkopalkki">
-
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <ListView
         android:id="@+id/medList"

@@ -20,41 +20,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        replaceFragment(new KotiFragment());
-        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-
-            switch (item.getItemId()){
-                case R.id.home:
-                    replaceFragment(new KotiFragment());
-                    break;
-                case R.id.lisaa:
-                    replaceFragment(new LisaaFragment());
-                    break;
-                case R.id.pisteet:
-                    replaceFragment(new MoreFragment());
-                    break;
-            }
-            return true;
-                    });
-
-/*        calendar = findViewById(R.id.calendar);
+     calendar = findViewById(R.id.calendar);
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 String Date = dayOfMonth + "-" + (month + 1) + "-" + year;
                     }
-        });*/
-    }
-
-    private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, fragment);
-        fragmentTransaction.commit();
-
+        });
     }
 }
