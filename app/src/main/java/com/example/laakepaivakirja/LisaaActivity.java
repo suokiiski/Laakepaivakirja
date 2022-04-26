@@ -52,4 +52,9 @@ public class LisaaActivity extends AppCompatActivity {
             return;
         }
     }
+
+    public void goToMain (View v) {
+        Intent returnBack = new Intent (this, MainActivity.class);
+        startActivity(returnBack);
+    }
 }
