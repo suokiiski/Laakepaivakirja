@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ListView
+<!--    <ListView
         android:id="@+id/list_layout"
         android:layout_width="409dp"
         android:layout_height="333dp"
@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-         />
+        app:layout_constraintTop_toBottomOf="@+id/bottomNavigationView" />
 
     <CalendarView
         android:id="@+id/calendar"
@@ -23,17 +23,36 @@
         android:layout_centerInParent="true"
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"></CalendarView>
-
+        app:layout_constraintEnd_toEndOf="parent"></CalendarView>-->
 
     <ListView
         android:id="@+id/medList"
         android:layout_width="411dp"
-        android:layout_height="388dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/calendar"
+        android:layout_height="340dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <CalendarView
+        android:id="@+id/calendar"
+        android:layout_width="412dp"
+        android:layout_height="335dp"
+        android:layout_marginTop="391dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/medList" />
+
+    <Button
+        android:id="@+id/addButt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="343dp"
+        android:onClick="addIsPressed"
+        android:text="+ Lisää muistutus"
+        app:layout_constraintBottom_toTopOf="@+id/calendar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/medList" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
