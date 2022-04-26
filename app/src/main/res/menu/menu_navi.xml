@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/koti"
+        android:title="Koti"
+        android:icon="@drawable/ic_koti" />
+
+    <item
+        android:id="@+id/lisaa"
+        android:title="Lisää"
+        android:icon="@drawable/ic_plus" />
+
+    <item
+        android:id="@+id/more"
+        android:title="Muuta"
+        android:icon="@drawable/ic_dots" />
+
+</menu>

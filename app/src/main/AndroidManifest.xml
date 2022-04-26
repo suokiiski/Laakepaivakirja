@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".MuuActivity"
+            android:exported="false" />
+        <activity
             android:name=".LisaaActivity"
             android:exported="false" />
         <activity

@@ -1,5 +1,6 @@
 package com.example.laakepaivakirja;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -7,12 +8,14 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.laakepaivakirja.databinding.ActivityMainBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class LisaaActivity extends AppCompatActivity {
     private EditText name, instructions, hour, min;
@@ -29,7 +32,30 @@ public class LisaaActivity extends AppCompatActivity {
         msg = (TextView) findViewById(R.id.errorMsg);
 
         Intent intent = getIntent();
-    }
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navi);
+        bottomNavigationView.setSelectedItemId(R.id.lisaa);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.lisaa:
+                        return true;
+                    case R.id.koti:
+                        startActivity(new Intent(getApplicationContext()
+                                , MainActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.more:
+                        startActivity(new Intent(getApplicationContext()
+                                , MuuActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                }
+                return false;
+            }
+        })
+    ;}
 
     public void sendData (View v) {
         String strName = name.getText().toString();

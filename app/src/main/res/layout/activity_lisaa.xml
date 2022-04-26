@@ -9,19 +9,19 @@
         android:id="@+id/Otsikko"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
-        android:text="Uusi Muistutus"
+        android:layout_marginTop="56dp"
+        android:text="Uusi Lääke"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/bottom_navi" />
 
     <TextView
         android:id="@+id/nimiOtsikko"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:text="nimi:"
+        android:text="Nimi:"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/nameInput"
         app:layout_constraintStart_toStartOf="parent" />
@@ -132,10 +132,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="goToMain"
-        android:text="Takaisin"
+        android:text="@string/takaisin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/sendButt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.89" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemBackground="@color/purple_200"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/menu_navi"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
