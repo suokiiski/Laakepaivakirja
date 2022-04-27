@@ -28,7 +28,7 @@
     <ListView
         android:id="@+id/medList"
         android:layout_width="409dp"
-        android:layout_height="280dp"
+        android:layout_height="328dp"
         android:layout_below="@+id/bottom_navi"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
@@ -44,25 +44,9 @@
         android:id="@+id/calendar"
         android:layout_width="412dp"
         android:layout_height="335dp"
+        android:layout_alignParentTop="true"
         android:layout_marginTop="391dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/medList" />
-
-    <Button
-        android:id="@+id/addButt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="153dp"
-        android:layout_marginTop="343dp"
-        android:layout_marginEnd="148dp"
-        android:onClick="addIsPressed"
-        android:text="Lisää lääke"
-        app:layout_constraintBottom_toTopOf="@+id/calendar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/medList" />

@@ -19,7 +19,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class LisaaActivity extends AppCompatActivity {
     private EditText name, instructions, hour, min;
-    private TextView msg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +28,6 @@ public class LisaaActivity extends AppCompatActivity {
         instructions = (EditText) findViewById(R.id.instructionInput);
         hour = (EditText) findViewById(R.id.hoursInput);
         min = (EditText) findViewById(R.id.minsInput);
-        msg = (TextView) findViewById(R.id.errorMsg);
 
         Intent intent = getIntent();
 
