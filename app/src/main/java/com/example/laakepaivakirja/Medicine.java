@@ -21,6 +21,22 @@ public class Medicine {
     }
 
     @Override
+    public boolean equals (Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof  Medicine)) {
+            return false;
+        }
+        Medicine m = (Medicine) obj;
+
+        if (this.name.equals(m.name) && this.instruction.equals(m.instruction) && this.hours == m.hours && this.mins == m.mins) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public String toString () {
         return this.name + ", " + this.hours + ":" + this.mins;
     }

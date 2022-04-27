@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -72,6 +74,10 @@ public class LisaaActivity extends AppCompatActivity {
             return;
         } else {
             MedicineSingleton.getInstance().addMedicine(strName, strInstructions, Integer.parseInt(strHour), Integer.parseInt(strMin));
+            SharedPreferences sharePref = getSharedPreferences("medPref", Activity.MODE_PRIVATE);
+            SharedPreferences.Editor prefEditor = sharePref.edit();
+            prefEditor.putString("MedsKey", MedicineSingleton.getInstance().getMedicinesJson());
+            prefEditor.commit();
             Toast.makeText(this, "Lisätty!", Toast.LENGTH_SHORT).show();
             return;
         }
