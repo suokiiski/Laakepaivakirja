@@ -1,6 +1,6 @@
 package com.example.laakepaivakirja;
 
-import androidx.activity.ActivityViewModelLazyKt;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navi);
         bottomNavigationView.setSelectedItemId(R.id.koti);
@@ -88,10 +89,5 @@ public class MainActivity extends AppCompatActivity {
                 String Date = dayOfMonth + "-" + (month + 1) + "-" + year;
                     }
         });
-    }
-
-    public void addIsPressed (View v) {
-        Intent intent = new Intent(this, LisaaActivity.class);
-        startActivity(intent);
     }
 }

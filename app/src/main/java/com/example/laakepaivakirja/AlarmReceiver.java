@@ -23,7 +23,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,i, 0);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "Halytys")
-                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle("Herää pahvi")
                 .setContentText(":D")
                 .setAutoCancel(true)
