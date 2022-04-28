@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     CalendarView calendar;
     ListView lv;
     List <Medicine> meds;
+    public static final String EXTRA_MESSAGE = "Lääkemuistutuksen sivu";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +79,9 @@ public class MainActivity extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                Intent intent = new Intent(MainActivity.this, MedicineActivity.class);
+                intent.putExtra(EXTRA_MESSAGE, i);
+                startActivity(intent);
             }
         });
 

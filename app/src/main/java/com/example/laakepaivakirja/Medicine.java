@@ -36,6 +36,22 @@ public class Medicine {
         return false;
     }
 
+    public String getName () {
+        return this.name;
+    }
+
+    public String getInstruction () {
+        return this.instruction;
+    }
+
+    public String getHours () {
+        return Integer.toString(this.hours);
+    }
+
+    public String getMins () {
+        return Integer.toString(this.mins);
+    }
+
     @Override
     public String toString () {
         return this.name + ", " + this.hours + ":" + this.mins;

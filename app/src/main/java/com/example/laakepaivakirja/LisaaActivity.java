@@ -83,9 +83,9 @@ public class LisaaActivity extends AppCompatActivity {
         }
     }
 
-    public void goToMain (View v) {
-        Intent returnBack = new Intent (this, MainActivity.class);
-        startActivity(returnBack);
+    public void goToAlarm (View v) {
+        Intent toAlarm = new Intent (this, AlarmActivity.class);
+        startActivity(toAlarm);
     }
 
 }

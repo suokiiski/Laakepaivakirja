@@ -26,14 +26,14 @@ public class AlarmActivity extends AppCompatActivity {
     private AlarmManager alarmManager;
     private PendingIntent pendingIntent;
 
-    public AlarmActivity() {
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm3);
+
+        Intent intent = getIntent();
+
         binding = ActivityAlarm3Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         createNotificationChannel();
