@@ -1,5 +1,6 @@
 package com.example.laakepaivakirja;
 
+import androidx.activity.ActivityViewModelLazyKt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
