@@ -3,15 +3,21 @@ package com.example.laakepaivakirja;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.w3c.dom.Text;
+
 public class MedicineActivity extends AppCompatActivity {
+    TextView tvName, tvInstruction, tvHour, tvMin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +27,10 @@ public class MedicineActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         int i = b.getInt(MainActivity.EXTRA_MESSAGE, 0);
 
-        TextView tvName = findViewById(R.id.medName);
-        TextView tvInstruction = findViewById(R.id.medInstruction);
-        TextView tvHour = findViewById(R.id.medHours);
-        TextView tvMin = findViewById(R.id.medMins);
+        tvName = findViewById(R.id.medName);
+        tvInstruction = findViewById(R.id.medInstruction);
+        tvHour = findViewById(R.id.medHours);
+        tvMin = findViewById(R.id.medMins);
 
         tvName.setText(MedicineSingleton.getInstance().getMedicine(i).getName());
         tvInstruction.setText(MedicineSingleton.getInstance().getMedicine(i).getInstruction());
@@ -33,6 +39,16 @@ public class MedicineActivity extends AppCompatActivity {
     }
 
     public void deleteItem (View v) {
-
+        Medicine m = new Medicine(tvName.getText().toString(), tvInstruction.getText().toString(),
+                Integer.parseInt(tvHour.getText().toString()), Integer.parseInt(tvMin.getText().toString()));
+        if (MedicineSingleton.getInstance().getMedicines().contains(m)) {
+            MedicineSingleton.getInstance().getMedicines().remove(m);
+            SharedPreferences sharePref = getSharedPreferences("medPref", Activity.MODE_PRIVATE);
+            SharedPreferences.Editor prefEditor = sharePref.edit();
+            prefEditor.putString("MedsKey", MedicineSingleton.getInstance().getMedicinesJson());
+            prefEditor.commit();
+            Toast.makeText(this, "Poistettu!", Toast.LENGTH_SHORT).show();
+            return;
+        }
     }
 }
