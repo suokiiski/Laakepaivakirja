@@ -15,10 +15,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import com.example.laakepaivakirja.databinding.ActivityAlarm3Binding;
 import com.google.android.material.timepicker.MaterialTimePicker;
-import com.google.android.material.timepicker.TimeFormat;
 import java.util.Calendar;
 
 public class AlarmActivity extends AppCompatActivity {
