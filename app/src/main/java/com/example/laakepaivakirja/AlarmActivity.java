@@ -100,7 +100,6 @@ public class AlarmActivity extends AppCompatActivity {
     private void poistaHaly() {
 
         Intent intent = new Intent(this, AlarmReceiver.class);
-
         pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
 
         if(alarmManager == null){
