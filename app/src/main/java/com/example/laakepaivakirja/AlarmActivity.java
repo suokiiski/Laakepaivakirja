@@ -6,11 +6,14 @@ import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.laakepaivakirja.databinding.ActivityAlarm3Binding;
@@ -58,29 +61,22 @@ public class AlarmActivity extends AppCompatActivity {
         });
     }
 
-    private void naytaAjanValitsin() {
+    private void naytaAjanValitsin(){
+        final Calendar c = Calendar.getInstance();
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int minute = c.get(Calendar.MINUTE);
 
-        valitsin = new MaterialTimePicker.Builder()
-                .setTimeFormat(TimeFormat.CLOCK_24H)
-                .setHour(20)
-                .setMinute(0)
-                .setTitleText("Valitse kellonaika")
-                .build();
-
-        valitsin.show(getSupportFragmentManager(), "Halytys");
-
-        valitsin.addOnPositiveButtonClickListener(new View.OnClickListener() {
+        TimePickerDialog timePickerDialog = new TimePickerDialog(AlarmActivity.this, new TimePickerDialog.OnTimeSetListener()
+        {
             @Override
-            public void onClick(View view) {
-                binding.ValitseAika.setText(valitsin.getHour() + " : " + valitsin.getMinute() + " ");
+            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+                //Tee tässä jotain sille ajalle
+                Log.d("AIKA", hour+":"+minute); //Tämä printtaa ajan nyt lokiin
             }
-        });
-                calendar = Calendar.getInstance();
-                calendar.set(Calendar.HOUR_OF_DAY, valitsin.getHour());
-                calendar.set(Calendar.MINUTE, valitsin.getMinute());
-                calendar.set(Calendar.SECOND, 0);
-                calendar.set(Calendar.MILLISECOND, 0);
-        }
+        },hour,minute,false);
+        timePickerDialog.show();
+        Toast.makeText(this, "Aika asetettu!", Toast.LENGTH_SHORT).show();
+    }
 
 
     private void asetaHalytys() {
