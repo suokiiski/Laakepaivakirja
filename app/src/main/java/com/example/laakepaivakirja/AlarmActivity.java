@@ -31,58 +31,56 @@ public class AlarmActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm3);
-
-        Intent intent = getIntent();
-
         binding = ActivityAlarm3Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         createNotificationChannel();
 
+
         binding.ChooseAika.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 naytaAjanValitsin();
-
             }
-
-            private void naytaAjanValitsin() {
-
-                valitsin = new MaterialTimePicker.Builder()
-                        .setTimeFormat(TimeFormat.CLOCK_24H)
-                        .setHour(20)
-                        .setMinute(0)
-                        .setTitleText("Valitse kellonaika")
-                        .build();
-
-                valitsin.show(getSupportFragmentManager(), "Halytys");
-                valitsin.addOnPositiveButtonClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-
-                        binding.ValitseAika.setText(valitsin.getHour() + " : " + valitsin.getMinute() + " ");
-                    }
-
-                });
-                calendar = Calendar.getInstance();
-                calendar.set(Calendar.HOUR_OF_DAY, valitsin.getHour());
-                calendar.set(Calendar.MINUTE, valitsin.getMinute());
-                calendar.set(Calendar.SECOND, 0);
-                calendar.set(Calendar.MILLISECOND, 0);
-            }
-
         });
 
         binding.SetHalytys.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 asetaHalytys();
             }
         });
 
+        binding.poistaHalytys.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                poistaHaly();
+            }
+        });
     }
+
+    private void naytaAjanValitsin() {
+
+        valitsin = new MaterialTimePicker.Builder()
+                .setTimeFormat(TimeFormat.CLOCK_24H)
+                .setHour(20)
+                .setMinute(0)
+                .setTitleText("Valitse kellonaika")
+                .build();
+
+        valitsin.show(getSupportFragmentManager(), "Halytys");
+
+        valitsin.addOnPositiveButtonClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.ValitseAika.setText(valitsin.getHour() + " : " + valitsin.getMinute() + " ");
+            }
+        });
+                calendar = Calendar.getInstance();
+                calendar.set(Calendar.HOUR_OF_DAY, valitsin.getHour());
+                calendar.set(Calendar.MINUTE, valitsin.getMinute());
+                calendar.set(Calendar.SECOND, 0);
+                calendar.set(Calendar.MILLISECOND, 0);
+        }
 
 
     private void asetaHalytys() {
@@ -96,16 +94,7 @@ public class AlarmActivity extends AppCompatActivity {
         Toast.makeText(this, "Hälytys asetettu!", Toast.LENGTH_SHORT).show();
 
 
-        binding.poistaHalytys.setOnClickListener(new View.OnClickListener() {
-
-        @Override
-        public void onClick (View view) {
-
-        poistaHaly();
-        }
-    });
 }
-
 
 
     private void poistaHaly() {
@@ -115,13 +104,10 @@ public class AlarmActivity extends AppCompatActivity {
         pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
 
         if(alarmManager == null){
-
             alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-
         }
             alarmManager.cancel(pendingIntent);
         Toast.makeText(this, "Hälytys poistettu!", Toast.LENGTH_SHORT).show();
-
     }
 
 
