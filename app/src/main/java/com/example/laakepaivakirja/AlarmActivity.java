@@ -71,9 +71,8 @@ public class AlarmActivity extends AppCompatActivity {
                 //Tee tässä jotain sille ajalle
                 Log.d("AIKA", hour+":"+minute); //Tämä printtaa ajan nyt lokiin
             }
-        },hour,minute,false);
+        },hour,minute,true);
         timePickerDialog.show();
-        Toast.makeText(this, "Aika asetettu!", Toast.LENGTH_SHORT).show();
     }
 
 

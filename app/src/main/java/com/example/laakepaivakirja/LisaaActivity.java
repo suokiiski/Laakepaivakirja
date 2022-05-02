@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,12 +14,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.laakepaivakirja.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class LisaaActivity extends AppCompatActivity {
-    private EditText name, instructions, hour, min;
+    private EditText name, instructions;
+    private TextView hour, minute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +27,8 @@ public class LisaaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lisaa);
         name = (EditText) findViewById(R.id.nameInput);
         instructions = (EditText) findViewById(R.id.instructionInput);
-        hour = (EditText) findViewById(R.id.hoursInput);
-        min = (EditText) findViewById(R.id.minsInput);
+        hour = (TextView) findViewById(R.id.hoursInput);
+        minute = (TextView) findViewById(R.id.minsInput);
 
         Intent intent = getIntent();
 
@@ -60,7 +59,7 @@ public class LisaaActivity extends AppCompatActivity {
     public void sendData (View v) {
         String strName = name.getText().toString();
         String strInstructions = instructions.getText().toString();
-        String strMin = min.getText().toString();
+        String strMin = minute.getText().toString();
         String strHour = hour.getText().toString();
 
         if (strName.isEmpty()) {
