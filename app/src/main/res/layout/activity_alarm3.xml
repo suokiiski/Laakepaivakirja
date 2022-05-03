@@ -9,24 +9,24 @@
 
     <TextView
         android:id="@+id/ValitseAika"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="jeejee"
+        android:layout_width="344dp"
+        android:layout_height="127dp"
+        android:text="@string/t_ll_voit_asettaa_h_lytyksen_l_kkeellesi_klikkaa_ensin_quot_aseta_aika_quot_ja_t_m_n_j_lkeen_quot_hyv_ksy_h_lytys_quot_nappia"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="50dp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.115" />
+        app:layout_constraintVertical_bias="0.183" />
 
     <Button
+        android:id="@+id/ChooseAika"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:id="@+id/ChooseAika"
-        android:text="Kellonaika"
+        android:text="Aseta Aika"
         android:textSize="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +40,7 @@
         android:id="@+id/SetHalytys"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:text="Aseta Hälytys"
+        android:text="Hyväksy Hälytys"
         android:textSize="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

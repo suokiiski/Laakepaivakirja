@@ -15,10 +15,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import com.example.laakepaivakirja.databinding.ActivityAlarm3Binding;
 import com.google.android.material.timepicker.MaterialTimePicker;
-import com.google.android.material.timepicker.TimeFormat;
 import java.util.Calendar;
 
 public class AlarmActivity extends AppCompatActivity {
@@ -34,47 +32,47 @@ public class AlarmActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm3);
-
-        Intent intent = getIntent();
-
         binding = ActivityAlarm3Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         createNotificationChannel();
 
+
         binding.ChooseAika.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 naytaAjanValitsin();
-
             }
-
-            private void naytaAjanValitsin(){
-                final Calendar c = Calendar.getInstance();
-                int hour = c.get(Calendar.HOUR_OF_DAY);
-                int minute = c.get(Calendar.MINUTE);
-
-                TimePickerDialog timePickerDialog = new TimePickerDialog(AlarmActivity.this, new TimePickerDialog.OnTimeSetListener()
-                {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int hour, int min) {
-                        //Tee tässä jotain sille ajalle
-                        Log.d("HELLO", hour+":"+minute); //Tämä printtaa ajan nyt lokiin
-                    }
-                },hour,minute,false);
-                timePickerDialog.show();
-            }
-
         });
 
         binding.SetHalytys.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 asetaHalytys();
             }
         });
 
+        binding.poistaHalytys.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                poistaHaly();
+            }
+        });
+    }
+
+    private void naytaAjanValitsin(){
+        final Calendar c = Calendar.getInstance();
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int minute = c.get(Calendar.MINUTE);
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(AlarmActivity.this, new TimePickerDialog.OnTimeSetListener()
+        {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+                //Tee tässä jotain sille ajalle
+                Log.d("AIKA", hour+":"+minute); //Tämä printtaa ajan nyt lokiin
+            }
+        },hour,minute,true);
+        timePickerDialog.show();
     }
 
 
@@ -89,32 +87,19 @@ public class AlarmActivity extends AppCompatActivity {
         Toast.makeText(this, "Hälytys asetettu!", Toast.LENGTH_SHORT).show();
 
 
-        binding.poistaHalytys.setOnClickListener(new View.OnClickListener() {
-
-        @Override
-        public void onClick (View view) {
-
-        poistaHaly();
-        }
-    });
 }
-
 
 
     private void poistaHaly() {
 
         Intent intent = new Intent(this, AlarmReceiver.class);
-
         pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
 
         if(alarmManager == null){
-
             alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-
         }
             alarmManager.cancel(pendingIntent);
         Toast.makeText(this, "Hälytys poistettu!", Toast.LENGTH_SHORT).show();
-
     }
 
 
