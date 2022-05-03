@@ -40,7 +40,7 @@ public class AlarmActivity extends AppCompatActivity {
         binding.SetHalytys.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                asetaHalytys();
+                naytaAjanValitsin();
             }
         });
 
@@ -53,20 +53,16 @@ public class AlarmActivity extends AppCompatActivity {
     }
 
 
-    private void asetaHalytys() {
-        final Calendar c = Calendar.getInstance();
-        int hour = c.get(Calendar.HOUR_OF_DAY);
-        int minute = c.get(Calendar.MINUTE);
+    private void asetaHalytys(int hour, int min) {
+        calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, min);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
 
-        TimePickerDialog timePickerDialog = new TimePickerDialog(AlarmActivity.this, new TimePickerDialog.OnTimeSetListener()
-        {
-            @Override
-            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
-                //Tee tässä jotain sille ajalle
-                Log.d("AIKA", hour+":"+minute); //Tämä printtaa ajan nyt lokiin
-            }
-        },hour,minute,true);
-        timePickerDialog.show();
+        if(calendar.before(calendar)){
+            calendar.add(Calendar.DATE, 1);
+        }
 
         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
@@ -76,6 +72,7 @@ public class AlarmActivity extends AppCompatActivity {
 
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
         Toast.makeText(this, "Hälytys asetettu!", Toast.LENGTH_SHORT).show();
+
 
     }
 
@@ -87,9 +84,10 @@ public class AlarmActivity extends AppCompatActivity {
         TimePickerDialog timePickerDialog = new TimePickerDialog(AlarmActivity.this, new TimePickerDialog.OnTimeSetListener()
         {
             @Override
-            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+            public void onTimeSet(TimePicker timePicker, int hour, int min) {
                 //Tee tässä jotain sille ajalle
-                Log.d("AIKA", hour+":"+minute); //Tämä printtaa ajan nyt lokiin
+                Log.d("AIKA", hour+":"+min); //Tämä printtaa ajan nyt lokiin
+                asetaHalytys(hour, min);
             }
         },hour,minute,true);
         timePickerDialog.show();
@@ -104,7 +102,7 @@ public class AlarmActivity extends AppCompatActivity {
         if(alarmManager == null){
             alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         }
-            alarmManager.cancel(pendingIntent);
+        alarmManager.cancel(pendingIntent);
         Toast.makeText(this, "Hälytys poistettu!", Toast.LENGTH_SHORT).show();
     }
 
