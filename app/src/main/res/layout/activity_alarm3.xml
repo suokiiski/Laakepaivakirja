@@ -11,7 +11,7 @@
         android:id="@+id/ValitseAika"
         android:layout_width="344dp"
         android:layout_height="127dp"
-        android:text="tällä voit asettaa hälytyksen läkkeellesi klikkaa ensin 'aseta aika' ja tämän jälkeen 'hyväksy hälytys' nappia"
+        android:text="@string/t_ll_voit_asettaa_h_lytyksen_l_kkeellesi_klikkaa_ensin_quot_aseta_aika_quot_ja_t_m_n_j_lkeen_quot_hyv_ksy_h_lytys_quot_nappia"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"

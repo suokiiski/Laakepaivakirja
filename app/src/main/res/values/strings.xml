@@ -13,4 +13,5 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="t_ll_voit_asettaa_h_lytyksen_l_kkeellesi_klikkaa_ensin_quot_aseta_aika_quot_ja_t_m_n_j_lkeen_quot_hyv_ksy_h_lytys_quot_nappia">Täällä voit asettaa hälytyksen lääkkeellesi. Klikkaa ensin \"Aseta aika\" ja tämän jälkeen \"Hyväksy hälytys\" -nappia.</string>
 </resources>

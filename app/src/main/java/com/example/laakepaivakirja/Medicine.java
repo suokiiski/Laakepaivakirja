@@ -3,7 +3,7 @@ package com.example.laakepaivakirja;
 import java.util.Calendar;
 
 /**
- * Luokka kuvaa Medicine(lääke)-olion
+ * Luokka kuvaa Medicine(lääke)-olioita
  * @author Vera Finogenova
  */
 public class Medicine {

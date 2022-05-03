@@ -55,7 +55,7 @@ public class LisaaActivity extends AppCompatActivity {
                 return false;
             }
         })
-        ;}
+    ;}
 
     public void sendData (View v) {
         String strName = name.getText().toString();
