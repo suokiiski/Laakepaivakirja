@@ -13,7 +13,6 @@
         android:layout_marginTop="59dp"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/dots"
         app:layout_constraintTop_toBottomOf="@+id/medName" />
 
     <TextView
@@ -39,27 +38,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/dots"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="9dp"
-        android:text=":"
-        android:textSize="24sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/medMins"
-        app:layout_constraintEnd_toStartOf="@+id/medMins"
-        app:layout_constraintStart_toEndOf="@+id/medHours" />
-
-    <TextView
         android:id="@+id/medHours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
-        android:layout_marginEnd="10dp"
         android:textSize="24sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/dots"
-        app:layout_constraintEnd_toStartOf="@+id/dots"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="181dp" />
 
     <Button
         android:id="@+id/deleteButt"

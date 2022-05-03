@@ -2,9 +2,6 @@ package com.example.laakepaivakirja;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,11 +13,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.laakepaivakirja.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class LisaaActivity extends AppCompatActivity {
-    private EditText name, instructions, hour, min;
+    private EditText name, instructions;
+    private TextView tvTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +25,13 @@ public class LisaaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lisaa);
         name = (EditText) findViewById(R.id.nameInput);
         instructions = (EditText) findViewById(R.id.instructionInput);
-        hour = (EditText) findViewById(R.id.hoursInput);
-        min = (EditText) findViewById(R.id.minsInput);
+        tvTime = (TextView) findViewById(R.id.timeInput);
+        tvTime.setText(getTime());
 
         Intent intent = getIntent();
+
+
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navi);
         bottomNavigationView.setSelectedItemId(R.id.lisaa);
@@ -55,13 +55,12 @@ public class LisaaActivity extends AppCompatActivity {
                 return false;
             }
         })
-    ;}
+        ;}
 
     public void sendData (View v) {
         String strName = name.getText().toString();
         String strInstructions = instructions.getText().toString();
-        String strMin = min.getText().toString();
-        String strHour = hour.getText().toString();
+        String strTime = tvTime.getText().toString();
 
         if (strName.isEmpty()) {
             Toast.makeText(this, "Lisää lääkkeen nimi!", Toast.LENGTH_SHORT).show();
@@ -69,11 +68,8 @@ public class LisaaActivity extends AppCompatActivity {
         } else if (strInstructions.isEmpty()) {
             Toast.makeText(this, "Lisää käyttöohjeet!", Toast.LENGTH_SHORT).show();
             return;
-        } else if (strHour.isEmpty() || strMin.isEmpty()) {
-            Toast.makeText(this, "Lisää aika!", Toast.LENGTH_SHORT).show();
-            return;
         } else {
-            MedicineSingleton.getInstance().addMedicine(strName, strInstructions, Integer.parseInt(strHour), Integer.parseInt(strMin));
+            MedicineSingleton.getInstance().addMedicine(strName, strInstructions, strTime);
             SharedPreferences sharePref = getSharedPreferences("medPref", Activity.MODE_PRIVATE);
             SharedPreferences.Editor prefEditor = sharePref.edit();
             prefEditor.putString("MedsKey", MedicineSingleton.getInstance().getMedicinesJson());
@@ -86,6 +82,28 @@ public class LisaaActivity extends AppCompatActivity {
     public void goToAlarm (View v) {
         Intent toAlarm = new Intent (this, AlarmActivity.class);
         startActivity(toAlarm);
+    }
+
+    public String getTime() {
+        Intent intent = new Intent();
+        String time = intent.getStringExtra(AlarmActivity.EXTRA_MESSAGE);
+        return time;
+    }
+
+
+
+
+
+    public void showAlarm (View view) {
+        /*timePicker.setOnTimeChangedListener( new TimePicker.onTimeChangedListener() {
+
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+
+                time = String.valueOf(hourOfDay).toString() + ":" + String.valueOf(minute).toString();
+            }
+
+        });*/
     }
 
 }

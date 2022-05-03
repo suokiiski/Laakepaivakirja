@@ -34,13 +34,12 @@ public class MedicineActivity extends AppCompatActivity {
 
         tvName.setText(MedicineSingleton.getInstance().getMedicine(i).getName());
         tvInstruction.setText(MedicineSingleton.getInstance().getMedicine(i).getInstruction());
-        tvHour.setText((MedicineSingleton.getInstance().getMedicine(i).getHours()));
-        tvMin.setText(MedicineSingleton.getInstance().getMedicine(i).getMins());
+        tvHour.setText((MedicineSingleton.getInstance().getMedicine(i).getTime()));
     }
 
     public void deleteItem (View v) {
         Medicine m = new Medicine(tvName.getText().toString(), tvInstruction.getText().toString(),
-                Integer.parseInt(tvHour.getText().toString()), Integer.parseInt(tvMin.getText().toString()));
+                tvHour.getText().toString());
         if (MedicineSingleton.getInstance().getMedicines().contains(m)) {
             MedicineSingleton.getInstance().getMedicines().remove(m);
             SharedPreferences sharePref = getSharedPreferences("medPref", Activity.MODE_PRIVATE);

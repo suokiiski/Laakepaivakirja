@@ -30,11 +30,10 @@ public class MedicineSingleton {
      * Tekee uuden olion saatujen parametrien avulla ja lisää se listaan
      * @param name Medicine-olion name-muuttuja
      * @param instruction Medicine-olion instruction-muuttuja
-     * @param hours Medicine-olion hours-muuttuja
-     * @param mins Medicine-olion mins-muuttuja
+     * @param time Medicine-olion time-muuttuja
      */
-    public void addMedicine (String name, String instruction, int hours, int mins) {
-        this.meds.add(new Medicine(name, instruction, hours, mins));
+    public void addMedicine (String name, String instruction, String time) {
+        this.meds.add(new Medicine(name, instruction, time));
     }
 
     /**
@@ -48,8 +47,8 @@ public class MedicineSingleton {
     }
 
     /**
-     *
-     * @return
+     * Palauttaa string-merkkijonoon muutetun listan
+     * @return meds-listan muutettuna merkkijonoksi
      */
     public String getMedicinesJson () {
         Gson gson = new Gson();
@@ -57,10 +56,19 @@ public class MedicineSingleton {
         return jsonMeds;
     }
 
+    /**
+     * Palauttaa Medicine-olioita sisältävä ArrayList
+     * @return this.meds
+     */
     public ArrayList<Medicine> getMedicines () {
         return this.meds;
     }
 
+    /**
+     * Palautta medicine-olion listalta sen indeksin perusteella
+     * @param i olion indeksi
+     * @return Medicine-olio
+     */
     public Medicine getMedicine (int i) {
         return this.meds.get(i);
     }

@@ -3,25 +3,25 @@ package com.example.laakepaivakirja;
 import java.util.Calendar;
 
 /**
- * Luokka kuvaa Medicine(lääke)-olioita
+ * Luokka kuvaa Medicine(lääke)-olion
  * @author Vera Finogenova
  */
 public class Medicine {
     private String name;
     private String instruction;
-    private int hours;
-    private int mins;
+    private String time;
+    //private int hours;
+    //private int mins;
     //private Calendar time;
 
 
 
-    public Medicine (String n, String i, int hours, int mins) {
+    public Medicine (String n, String i, String time) {
         this.name = n;
         this.instruction = i;
-        this.hours = hours;
-        this.mins = mins;
-        //this.time.set(Calendar.HOUR, hours);
-        //this.time.set(Calendar.MINUTE, mins);
+        this.time = time;
+        //this.hours = hours;
+        //this.mins = mins;
     }
 
     /**
@@ -39,7 +39,7 @@ public class Medicine {
         }
         Medicine m = (Medicine) obj;
 
-        if (this.name.equals(m.name) && this.instruction.equals(m.instruction) && this.hours == m.hours && this.mins == m.mins) {
+        if (this.name.equals(m.name) && this.instruction.equals(m.instruction) && this.time.equals(m.time)) {
             return true;
         }
         return false;
@@ -61,29 +61,33 @@ public class Medicine {
         return this.instruction;
     }
 
+    public String getTime() {
+        return this.time;
+    }
+
     /**
      * Palauttaa lääkkeen käyttöajan tunnit merkkijono-muodossa
      * @return int hours muunnettuna String-tyyppiin
-     */
+     *//*
     public String getHours () {
         return Integer.toString(this.hours);
     }
 
-    /**
+    *//**
      * Palauttaa lääkkeen käyttöajan minuutit merkkijono-muodossa
      * @return int mins muunnettuna String-tyyppiin
-     */
+     *//*
     public String getMins () {
         return Integer.toString(this.mins);
     }
 
-    /**
+    *//**
      * Palauttaa merkkijonon, jonka käytetään ListView näkymässä
      * @return name, hours:mins
      */
     @Override
     public String toString () {
-        return this.name + ", " + this.hours + ":" + this.mins;
+        return this.name;
     }
 
 }

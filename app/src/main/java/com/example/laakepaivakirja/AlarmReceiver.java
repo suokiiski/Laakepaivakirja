@@ -7,13 +7,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import java.lang.String;
-
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 public class AlarmReceiver extends BroadcastReceiver {
-
-
 
     @Override
     public void onReceive(Context context, Intent intent){
@@ -24,8 +21,8 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "Halytys")
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("Herää pahvi")
-                .setContentText(":D")
+                .setContentTitle("Syö lääkkeesi")
+                .setContentText("NYT.")
                 .setAutoCancel(true)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)

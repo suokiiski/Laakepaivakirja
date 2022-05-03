@@ -9,102 +9,80 @@
         android:id="@+id/Otsikko"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
         android:text="Uusi Lääke"
         android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bottom_navi" />
+        app:layout_constraintTop_toBottomOf="@+id/bottom_navi"
+        app:layout_constraintVertical_bias="0.076" />
 
     <TextView
         android:id="@+id/nimiOtsikko"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:text="Nimi:"
+        android:text="Lääkkeen nimi:"
+        android:textColor="#303030"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/nameInput"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.458" />
 
     <TextView
         android:id="@+id/ohjeOtsikko"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginBottom="4dp"
-        android:text="Käyttöohje"
+        android:text="Käyttöohje:"
+        android:textColor="#303030"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/instructionInput"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tunnitOtsikko"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="31dp"
-        android:text="Tunnit"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/hoursInput"
-        app:layout_constraintEnd_toEndOf="@+id/hoursInput"
-        app:layout_constraintStart_toStartOf="@+id/hoursInput" />
-
-    <TextView
-        android:id="@+id/minuutitOtsikko"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="93dp"
-        android:layout_marginEnd="93dp"
-        android:layout_marginBottom="31dp"
-        android:text="Minuutit"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/minsInput"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/hoursInput" />
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.561" />
+
+    <TextView
+        android:id="@+id/timeInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00:00"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.693" />
 
     <EditText
         android:id="@+id/nameInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="3dp"
-        android:layout_marginBottom="49dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/instructionInput"
-        app:layout_constraintEnd_toEndOf="@+id/instructionInput" />
-
-    <EditText
-        android:id="@+id/instructionInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="276dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/ohjeOtsikko"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/hoursInput"
-        android:layout_width="134dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="32dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBaseline_toBaselineOf="@+id/minsInput"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/minsInput"
-        android:layout_width="150dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="47dp"
-        android:layout_marginBottom="184dp"
+        android:layout_width="225dp"
+        android:layout_height="54dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/hoursInput" />
+        app:layout_constraintHorizontal_bias="0.865"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.432" />
+
+    <EditText
+        android:id="@+id/instructionInput"
+        android:layout_width="239dp"
+        android:layout_height="53dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.906"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.541" />
 
     <Button
         android:id="@+id/sendButt"
@@ -112,11 +90,13 @@
         android:layout_height="wrap_content"
         android:onClick="sendData"
         android:text="Lisää"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.89" />
+        app:layout_constraintTop_toBottomOf="@+id/bottom_navi"
+        app:layout_constraintVertical_bias="0.832" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navi"
@@ -125,6 +105,12 @@
         app:itemBackground="@color/purple_200"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:menu="@menu/menu_navi"
         tools:ignore="MissingConstraints" />
 
@@ -133,9 +119,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="goToAlarm"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/minuutitOtsikko"
+        android:text="Aseta hälytys"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/instructionInput" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.286" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
