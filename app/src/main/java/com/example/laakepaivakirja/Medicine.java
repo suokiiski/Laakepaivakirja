@@ -2,6 +2,10 @@ package com.example.laakepaivakirja;
 
 import java.util.Calendar;
 
+/**
+ * Luokka kuvaa Medicine(lääke)-olioita
+ * @author Vera Finogenova
+ */
 public class Medicine {
     private String name;
     private String instruction;
@@ -20,6 +24,11 @@ public class Medicine {
         //this.time.set(Calendar.MINUTE, mins);
     }
 
+    /**
+     * Vertailee parametrina saatun objektin tähän olioon
+     * @param obj, johon vertaillaan
+     * @return vertailun tulos (true tai false)
+     */
     @Override
     public boolean equals (Object obj) {
         if (obj == this) {
@@ -36,22 +45,42 @@ public class Medicine {
         return false;
     }
 
+    /**
+     * Palauttaa lääkkeen nimi
+     * @return String name
+     */
     public String getName () {
         return this.name;
     }
 
+    /**
+     * Palauttaa lääkkeen käyttöohjeet
+     * @return String instruction
+     */
     public String getInstruction () {
         return this.instruction;
     }
 
+    /**
+     * Palauttaa lääkkeen käyttöajan tunnit merkkijono-muodossa
+     * @return int hours muunnettuna String-tyyppiin
+     */
     public String getHours () {
         return Integer.toString(this.hours);
     }
 
+    /**
+     * Palauttaa lääkkeen käyttöajan minuutit merkkijono-muodossa
+     * @return int mins muunnettuna String-tyyppiin
+     */
     public String getMins () {
         return Integer.toString(this.mins);
     }
 
+    /**
+     * Palauttaa merkkijonon, jonka käytetään ListView näkymässä
+     * @return name, hours:mins
+     */
     @Override
     public String toString () {
         return this.name + ", " + this.hours + ":" + this.mins;

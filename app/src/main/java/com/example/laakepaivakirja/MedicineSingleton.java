@@ -6,6 +6,10 @@ import android.content.SharedPreferences;
 import java.util.ArrayList;
 import com.google.gson.Gson;
 
+/**
+ * @author Vera Finogenova
+ * Singleton-luokka, jossa sijaitsee Medicine-olioita
+ */
 public class MedicineSingleton {
     private static final MedicineSingleton ourInstance = new MedicineSingleton();
     private ArrayList<Medicine> meds;
