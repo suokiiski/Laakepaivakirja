@@ -37,13 +37,6 @@ public class AlarmActivity extends AppCompatActivity {
         createNotificationChannel();
 
 
-        binding.ChooseAika.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                naytaAjanValitsin();
-            }
-        });
-
         binding.SetHalytys.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,6 +50,33 @@ public class AlarmActivity extends AppCompatActivity {
                 poistaHaly();
             }
         });
+    }
+
+
+    private void asetaHalytys() {
+        final Calendar c = Calendar.getInstance();
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int minute = c.get(Calendar.MINUTE);
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(AlarmActivity.this, new TimePickerDialog.OnTimeSetListener()
+        {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+                //Tee tässä jotain sille ajalle
+                Log.d("AIKA", hour+":"+minute); //Tämä printtaa ajan nyt lokiin
+            }
+        },hour,minute,true);
+        timePickerDialog.show();
+
+        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        Intent intent = new Intent(this, AlarmReceiver.class);
+
+        pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        Toast.makeText(this, "Hälytys asetettu!", Toast.LENGTH_SHORT).show();
+
     }
 
     private void naytaAjanValitsin(){
@@ -74,20 +94,6 @@ public class AlarmActivity extends AppCompatActivity {
         },hour,minute,true);
         timePickerDialog.show();
     }
-
-
-    private void asetaHalytys() {
-        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-
-        Intent intent = new Intent(this, AlarmReceiver.class);
-
-        pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
-
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-        Toast.makeText(this, "Hälytys asetettu!", Toast.LENGTH_SHORT).show();
-
-
-}
 
 
     private void poistaHaly() {
