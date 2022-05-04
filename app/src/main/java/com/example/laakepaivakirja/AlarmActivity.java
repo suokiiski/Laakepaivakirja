@@ -21,6 +21,10 @@ import com.google.android.material.timepicker.MaterialTimePicker;
 import java.util.Calendar;
 import android.widget.TimePicker.OnTimeChangedListener;
 
+/**
+ * Sisältää hälytykseen liittyvät metodit ja kuvaa hälytyksen toimintaa
+ * @author Atte Kilpeläinen
+ */
 public class AlarmActivity extends AppCompatActivity {
 
     private ActivityAlarm3Binding binding;
@@ -38,11 +42,14 @@ public class AlarmActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm3);
+        // Yhdistää xml tiedoston View-objekteihin
         binding = ActivityAlarm3Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        //luo ilmoituskanavan
         createNotificationChannel();
 
 
+        //Lisätään napeille toimintaa ja sidotaan järjestelmä hälytyspyyntöön
         binding.SetHalytys.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,6 +57,7 @@ public class AlarmActivity extends AppCompatActivity {
             }
         });
 
+        //Lisätään napeille toimintaa ja sidotaan järjestelmä hälytyspyyntöön
         binding.poistaHalytys.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,6 +67,7 @@ public class AlarmActivity extends AppCompatActivity {
     }
 
 
+    // Metodi asettaa hälytyksen aikaan, jonka se saa parametrina
     private void asetaHalytys(int hour, int min) {
         calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, hour);
@@ -87,6 +96,7 @@ public class AlarmActivity extends AppCompatActivity {
 
     }
 
+    // Metodi ota ajanvalitsin (timepicker) näkyville, ja asettaa hälytyksen valittuu aikaan AsetaHalytys() metodilla
     private void naytaAjanValitsin(){
         final Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
@@ -98,11 +108,6 @@ public class AlarmActivity extends AppCompatActivity {
             public void onTimeSet(TimePicker timePicker, int hour, int min) {
                 Log.d("AIKA", hour+":"+min);
                 asetaHalytys(hour, min);
-                hourCh = timePicker.getCurrentHour();
-                minCh = timePicker.getCurrentMinute();
-                time = Integer.toString(hourCh) + ":" + Integer.toString(minCh);
-                /*Intent intent = new Intent(AlarmActivity.this, LisaaActivity.class);
-                intent.putExtra("Time", time);*/
 
             }
         },hour,minute,true);
@@ -111,6 +116,8 @@ public class AlarmActivity extends AppCompatActivity {
     }
 
 
+
+    //Siirtyy uuteen näkymään, kun "poista hälytys" nappi on painettu, ja poista hälytyksen, jos se ei ole null
     private void poistaHaly() {
 
         Intent intent = new Intent(this, AlarmReceiver.class);
@@ -123,6 +130,10 @@ public class AlarmActivity extends AppCompatActivity {
         Toast.makeText(this, "Hälytys poistettu!", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Siirtyy uuteen näkymään, kun "takaisin" painike on painettu
+     * @param v nykyinen näkymä
+     */
     public void goBack (View v) {
         Intent intent = new Intent(this, LisaaActivity.class);
         intent.putExtra(EXTRA_MESSAGE, time);
@@ -130,6 +141,7 @@ public class AlarmActivity extends AppCompatActivity {
     }
 
 
+    // Metodi luo ilmoituskanavan, joka tekee pop-up ilmoituksen
     private void createNotificationChannel() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){

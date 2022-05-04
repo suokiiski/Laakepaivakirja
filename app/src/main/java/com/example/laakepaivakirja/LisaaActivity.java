@@ -15,6 +15,10 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ * Luokka siirtää näkymää LisaaActivityyn kun hälytysilmoitus on painettu ja rakentaa hälytys
+ * @author Atte Kilpeläinen
+ */
 public class LisaaActivity extends AppCompatActivity {
     private EditText name, instructions;
     private TextView tvTime;
@@ -30,9 +34,7 @@ public class LisaaActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-
-
-
+        //Seuraava koodi rakentaa valikkopalkin
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navi);
         bottomNavigationView.setSelectedItemId(R.id.lisaa);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -57,10 +59,15 @@ public class LisaaActivity extends AppCompatActivity {
         })
     ;}
 
+    /**
+     *
+     * @param v
+     */
     public void sendData (View v) {
         String strName = name.getText().toString();
         String strInstructions = instructions.getText().toString();
         String strTime = tvTime.getText().toString();
+        Intent intent = new Intent(LisaaActivity.this, MainActivity.class);
 
         if (strName.isEmpty()) {
             Toast.makeText(this, "Lisää lääkkeen nimi!", Toast.LENGTH_SHORT).show();
@@ -75,8 +82,10 @@ public class LisaaActivity extends AppCompatActivity {
             prefEditor.putString("MedsKey", MedicineSingleton.getInstance().getMedicinesJson());
             prefEditor.commit();
             Toast.makeText(this, "Lisätty!", Toast.LENGTH_SHORT).show();
+            startActivity(intent);
             return;
         }
+
     }
 
     public void goToAlarm (View v) {

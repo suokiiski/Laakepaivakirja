@@ -66,22 +66,6 @@ public class Medicine {
     }
 
     /**
-     * Palauttaa lääkkeen käyttöajan tunnit merkkijono-muodossa
-     * @return int hours muunnettuna String-tyyppiin
-     *//*
-    public String getHours () {
-        return Integer.toString(this.hours);
-    }
-
-    *//**
-     * Palauttaa lääkkeen käyttöajan minuutit merkkijono-muodossa
-     * @return int mins muunnettuna String-tyyppiin
-     *//*
-    public String getMins () {
-        return Integer.toString(this.mins);
-    }
-
-    *//**
      * Palauttaa merkkijonon, jonka käytetään ListView näkymässä
      * @return name, hours:mins
      */
