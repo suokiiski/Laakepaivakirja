@@ -16,8 +16,8 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
- * Luokka siirtää näkymää LisaaActivityyn kun hälytysilmoitus on painettu ja rakentaa hälytys
- * @author Atte Kilpeläinen
+ * Aktivity, jonka käytetään lääkkeen tietojen tallentamiseen
+ * @author Vera Finogenova
  */
 public class LisaaActivity extends AppCompatActivity {
     private EditText name, instructions;
@@ -35,6 +35,7 @@ public class LisaaActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         //Seuraava koodi rakentaa valikkopalkin
+        //Tekijä: Kirsi Tolonen
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navi);
         bottomNavigationView.setSelectedItemId(R.id.lisaa);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -60,8 +61,9 @@ public class LisaaActivity extends AppCompatActivity {
     ;}
 
     /**
-     *
-     * @param v
+     * Kun nappi on painettu, metodi tallentaa syötetyt tiedot: tekee niistä olion, jonka lisätään listaan, jonka tallennetaan SharedPreferensseihin
+     * Jos joku kenttä on tyhjä, se ilmoittaa tästä
+     * @param v UI elementti (button)
      */
     public void sendData (View v) {
         String strName = name.getText().toString();
@@ -88,31 +90,23 @@ public class LisaaActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Metodi avaa AlarmActivity-aktiviteetti kun "aseta hälytys" -nappi on painettu
+     * @param v UI elementti (button)
+     */
     public void goToAlarm (View v) {
         Intent toAlarm = new Intent (this, AlarmActivity.class);
         startActivity(toAlarm);
     }
 
+    /**
+     * Metodi, joka saa ajan timepickeriltä ja palauttaa se String-muodossa
+     * @return hälytyksen aika String muodossa
+     */
     public String getTime() {
         Intent intent = new Intent();
         String time = intent.getStringExtra(AlarmActivity.EXTRA_MESSAGE);
         return time;
-    }
-
-
-
-
-
-    public void showAlarm (View view) {
-        /*timePicker.setOnTimeChangedListener( new TimePicker.onTimeChangedListener() {
-
-            @Override
-            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-
-                time = String.valueOf(hourOfDay).toString() + ":" + String.valueOf(minute).toString();
-            }
-
-        });*/
     }
 
 }

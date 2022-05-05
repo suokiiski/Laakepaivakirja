@@ -8,6 +8,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.window.SplashScreen;
 
+/**
+ * SplashScreen-activity
+ * @author Kirsi Tolonen
+ */
 public class SplashActivity extends AppCompatActivity {
 
     @Override
@@ -17,6 +21,9 @@ public class SplashActivity extends AppCompatActivity {
 
         new Handler().postDelayed(new Runnable(){
             @Override
+            /**
+             * Metodi, joka asettaa SplashScreen esille, kun sovellus käynnistyy
+             */
             public void run(){
                 startActivity(new Intent(SplashActivity.this,MainActivity.class ));
                 finish();

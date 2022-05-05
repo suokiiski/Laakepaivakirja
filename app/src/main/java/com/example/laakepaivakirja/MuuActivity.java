@@ -9,6 +9,10 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ * Activity joka tulee esille kun yläpalkin "muu" nappi on painettu
+ * @author Kirsi Tolonen
+ */
 public class MuuActivity extends AppCompatActivity {
 
     @Override
@@ -16,6 +20,7 @@ public class MuuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_muu);
 
+        // Seuraava koodi rakentaa valikkopalkin
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navi);
         bottomNavigationView.setSelectedItemId(R.id.more);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

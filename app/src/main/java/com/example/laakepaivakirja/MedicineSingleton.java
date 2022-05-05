@@ -28,7 +28,7 @@ public class MedicineSingleton {
     }
 
     /**
-     * Tekee uuden olion saatujen parametrien avulla ja lisää se listaan
+     * Tekee uuden olion ja lisää se listaan
      * @param name Medicine-olion name-muuttuja
      * @param instruction Medicine-olion instruction-muuttuja
      * @param time Medicine-olion time-muuttuja

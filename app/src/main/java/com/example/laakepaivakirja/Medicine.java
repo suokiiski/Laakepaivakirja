@@ -10,11 +10,6 @@ public class Medicine {
     private String name;
     private String instruction;
     private String time;
-    //private int hours;
-    //private int mins;
-    //private Calendar time;
-
-
 
     public Medicine (String n, String i, String time) {
         this.name = n;
@@ -66,7 +61,7 @@ public class Medicine {
     }
 
     /**
-     * Palauttaa merkkijonon, jonka käytetään ListView näkymässä
+     * Palauttaa merkkijono, jonka käytetään ListView näkymässä
      * @return name, hours:mins
      */
     @Override

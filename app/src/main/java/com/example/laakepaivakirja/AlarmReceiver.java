@@ -10,8 +10,17 @@ import java.lang.String;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+/**
+ * Luokka avaa LisaaActivity-aktiveetti, kun hälytysilmoitus on painettu, ja rakentaa hälytys
+ * @author Atte Kilpeläinen
+ */
 public class AlarmReceiver extends BroadcastReceiver {
 
+    /**
+     * Metodi laittaa hälytysilmoitus näkyviin kun hälytyksen aika on tullut
+     * @param context parametri aktiviteettia varten
+     * @param intent parametri aktiviteettia varten
+     */
     @Override
     public void onReceive(Context context, Intent intent){
 

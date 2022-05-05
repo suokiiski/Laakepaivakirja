@@ -42,14 +42,14 @@ public class AlarmActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm3);
-        // Yhdistää xml tiedoston View-objekteihin
+        // Yhdistää xml tiedosto View-objekteihin
         binding = ActivityAlarm3Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         //luo ilmoituskanavan
         createNotificationChannel();
 
 
-        //Lisätään napeille toimintaa ja sidotaan järjestelmä hälytyspyyntöön
+        //Lisää napeille toimintaa ja sidotaan järjestelmä hälytyspyyntöön
         binding.SetHalytys.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,7 +57,7 @@ public class AlarmActivity extends AppCompatActivity {
             }
         });
 
-        //Lisätään napeille toimintaa ja sidotaan järjestelmä hälytyspyyntöön
+        //Lisää napeille toimintaa ja sidotaan järjestelmä hälytyspyyntöön
         binding.poistaHalytys.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,15 +88,12 @@ public class AlarmActivity extends AppCompatActivity {
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
         Toast.makeText(this, "Hälytys asetettu!", Toast.LENGTH_SHORT).show();
 
-        //TextView tunnit = (TextView)findViewById(R.id.hoursInput);
-        //TextView minuutit = (TextView)findViewById(R.id.minsInput);
-
         Intent paluu = new Intent(this, AlarmActivity.class);
         startActivity(paluu);
 
     }
 
-    // Metodi ota ajanvalitsin (timepicker) näkyville, ja asettaa hälytyksen valittuu aikaan AsetaHalytys() metodilla
+    // Metodi laittaa ajanvalitsin (timepicker) esille, ja asettaa hälytyksen valittuun aikaan AsetaHalytys() metodilla
     private void naytaAjanValitsin(){
         final Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
@@ -117,7 +114,7 @@ public class AlarmActivity extends AppCompatActivity {
 
 
 
-    //Siirtyy uuteen näkymään, kun "poista hälytys" nappi on painettu, ja poista hälytyksen, jos se ei ole null
+    // Poistaa hälytys, kun "poista hälytys" nappi on painettu, jos se ei ole null
     private void poistaHaly() {
 
         Intent intent = new Intent(this, AlarmReceiver.class);
@@ -131,8 +128,8 @@ public class AlarmActivity extends AppCompatActivity {
     }
 
     /**
-     * Siirtyy uuteen näkymään, kun "takaisin" painike on painettu
-     * @param v nykyinen näkymä
+     * Siirtyy toiseen aktiviteettiin, kun "takaisin" nappi on painettu
+     * @param v UI komponentti (button)
      */
     public void goBack (View v) {
         Intent intent = new Intent(this, LisaaActivity.class);

@@ -16,6 +16,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.w3c.dom.Text;
 
+/**
+ * Aktiviteetti joka tulee näkyviin kun listview:n elementtiin on klikattu. Sisältää tiedot lääkkeestä
+ * @author Vera Finogenova
+ */
 public class MedicineActivity extends AppCompatActivity {
     TextView tvName, tvInstruction, tvHour, tvMin;
 
@@ -37,6 +41,10 @@ public class MedicineActivity extends AppCompatActivity {
         tvHour.setText((MedicineSingleton.getInstance().getMedicine(i).getTime()));
     }
 
+    /**
+     * Metodi, joka poistaa lääke listalta ja SharedPreferensseista, kun "poista" nappi on painettu
+     * @param v UI elementti (nappi)
+     */
     public void deleteItem (View v) {
         Medicine m = new Medicine(tvName.getText().toString(), tvInstruction.getText().toString(),
                 tvHour.getText().toString());
@@ -51,6 +59,10 @@ public class MedicineActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Metodi, joka avaa MainActivity, kun "takaisin" nappi on painettu
+     * @param v UI elementti (nappi)
+     */
     public void goBack (View v) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

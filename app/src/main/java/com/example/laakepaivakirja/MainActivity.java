@@ -27,6 +27,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * Ohjelman päänäkymä
+ * @author Kirsi Tolonen
+ */
 public class MainActivity extends AppCompatActivity {
     CalendarView calendar;
     ListView lv;
@@ -39,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        //Seuraava koodi rakentaa valikkopalkin
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navi);
         bottomNavigationView.setSelectedItemId(R.id.koti);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -62,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*Seuraava koodi saa listan Gson Stringinä SharedPreferenseiltä, sitten muunnaa se Medicine-tyyppiseksi listaksi
+        ja lisää sen alkioita listview-näkymälle.
+         */
+
         lv = findViewById(R.id.medList);
         TypeToken<List<Medicine>> token = new TypeToken<List<Medicine>>() {};
         Gson gson = new Gson();
@@ -76,20 +85,19 @@ public class MainActivity extends AppCompatActivity {
         }
         lv.setAdapter(new ArrayAdapter<Medicine>(this, android.R.layout.simple_list_item_1, MedicineSingleton.getInstance().getMedicines()));
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            /**
+             * Metodi avaa uuden näkymän, kun listan elementti on painettu
+             * @param adapterView adapteri
+             * @param view UI elementti (listview)
+             * @param i elementin indeksi
+             * @param l
+             */
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(MainActivity.this, MedicineActivity.class);
                 intent.putExtra(EXTRA_MESSAGE, i);
                 startActivity(intent);
             }
-        });
-
-        calendar = findViewById(R.id.calendar);
-        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                String Date = dayOfMonth + "-" + (month + 1) + "-" + year;
-                    }
         });
     }
 }
